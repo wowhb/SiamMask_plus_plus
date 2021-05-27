@@ -30,7 +30,7 @@
                 "frame_range": 20
             },
             "vid": {
-                "root": "../../data/vid/crop511",
+                "root": "../../data/vid/crop511", 
                 "anno": "../../data/vid/train.json",
                 "num_use": 100000,
                 "frame_range": 100
@@ -78,7 +78,7 @@
         "search_size": 255,
         "size": 17,
 
-        "num" : 1000,
+        "num" : 3000,
 
         "augmentation": {
             "template": {
