@@ -1,6 +1,6 @@
 # --------------------------------------------------------
 # SiamMask++ 
-# Written by Hyunbin Choi for siamask++
+# Written by Hyunbin Choi for SiamMask++
 # --------------------------------------------------------
 import torch
 import torch.nn as nn
