@@ -1,27 +1,19 @@
 # --------------------------------------------------------
-# SiamMask
-# Licensed under The MIT License
-# Written by Qiang Wang (wangqiang2015 at ia.ac.cn)
+# SiamMask++ 
+# Modified from Hyunbin Choi for siamask++
+# Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
 import torch.nn as nn
 import logging
 
 logger = logging.getLogger('global')
 
-
 class Features(nn.Module):
     def __init__(self):
         super(Features, self).__init__()
         self.feature_size = -1
-
     def forward(self, x):
         raise NotImplementedError
-
-    def param_groups(self, start_lr, feature_mult=1):
-        params = filter(lambda x:x.requires_grad, self.parameters())
-        params = [{'params': params, 'lr': start_lr * feature_mult}]
-        return params
-
     def load_model(self, f='pretrain.model'):
         with open(f) as f:
             pretrained_dict = torch.load(f)
@@ -31,12 +23,14 @@ class Features(nn.Module):
             print(pretrained_dict.keys())
             model_dict.update(pretrained_dict)
             self.load_state_dict(model_dict)
-
+    def param_groups(self, start_lr, feature_mult=1):
+        params = filter(lambda x:x.requires_grad, self.parameters())
+        params = [{'params': params, 'lr': start_lr * feature_mult}]
+        return params
 
 class MultiStageFeature(Features):
     def __init__(self):
         super(MultiStageFeature, self).__init__()
-
         self.layers = []
         self.train_num = -1
         self.change_point = []
@@ -75,5 +69,4 @@ class MultiStageFeature(Features):
         else:
             for m in self.train_layers():
                 m.train(True)
-
         return self
