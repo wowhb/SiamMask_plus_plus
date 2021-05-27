@@ -14,7 +14,7 @@ from utils.anchors import Anchors
 class SiamMask(nn.Module):
     def __init__(self, anchors=None, o_sz=63, g_sz=127):
         super(SiamMask, self).__init__()
-        self.anchors = anchors  # anchor_cfg
+        self.anchors = anchors 
         self.anchor_num = len(self.anchors["ratios"]) * len(self.anchors["scales"])
         self.anchor = Anchors(anchors)
         self.features = None
