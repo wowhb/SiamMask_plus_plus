@@ -1,15 +1,14 @@
 # --------------------------------------------------------
-# SiamMask++
+# SiamMask++ 
+# Written by Hyunbin Choi for siamask++
 # --------------------------------------------------------
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-
 class Corr_Up(nn.Module):
-    """
-    SiamFC head
-    """
+     #SiamFC 
     def __init__(self):
         super(Corr_Up, self).__init__()
 
@@ -180,8 +179,8 @@ class MultiRPN(RPN):
 
 def conv2d_dw_group(x, kernel):
     batch, channel = kernel.shape[:2]
-    x = x.view(1, batch*channel, x.size(2), x.size(3))  # 1 * (b*c) * k * k
-    kernel = kernel.view(batch*channel, 1, kernel.size(2), kernel.size(3))  # (b*c) * 1 * H * W
+    x = x.view(1, batch*channel, x.size(2), x.size(3)) 
+    kernel = kernel.view(batch*channel, 1, kernel.size(2), kernel.size(3)) 
     out = F.conv2d(x, kernel, groups=batch*channel)
     out = out.view(batch, channel, out.size(2), out.size(3))
     return out
@@ -189,7 +188,7 @@ def conv2d_dw_group(x, kernel):
 class DepthCorr(nn.Module):
     def __init__(self, in_channels, hidden, out_channels, kernel_size=3):
         super(DepthCorr, self).__init__()
-        # adjust layer for asymmetrical features
+
         self.conv_kernel = nn.Sequential(
                 nn.Conv2d(in_channels, hidden, kernel_size=kernel_size, bias=False),
                 nn.BatchNorm2d(hidden),
