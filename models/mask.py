@@ -1,14 +1,13 @@
 # --------------------------------------------------------
-# SiamMask++
+# SiamMask++ 
+# Written by Hyunbin Choi for siamask++
 # --------------------------------------------------------
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
 class Corr_Up(nn.Module):
-    """
-    SiamFC head
-    """
+    #SiamFC 
     def __init__(self):
         super(Corr_Up, self).__init__()
 
@@ -28,8 +27,6 @@ class Corr_Up(nn.Module):
 
 #  from pysot : https://github.com/STVIR/pysot
 def xcorr_fast(x, kernel):
-    """group conv2d to calculate cross correlation, fast version
-    """
     batch = kernel.size()[0]
     pk = kernel.view(-1, x.size()[1], kernel.size()[2], kernel.size()[3])
     px = x.view(1, -1, x.size()[2], x.size()[3])
@@ -37,10 +34,9 @@ def xcorr_fast(x, kernel):
     po = po.view(batch, -1, po.size()[2], po.size()[3])
     return po
 
-
 def xcorr_depthwise(x, kernel):
-    """depthwise cross correlation
-    """
+    #depthwise cross correlation
+
     batch = kernel.size(0)
     channel = kernel.size(1)
     x = x.view(1, batch*channel, x.size(2), x.size(3))
@@ -49,24 +45,6 @@ def xcorr_depthwise(x, kernel):
     out = out.view(batch, channel, out.size(2), out.size(3))
     return out
         
-class MaskforSiamMask(nn.Module):
-    def __init__(self):
-        super(Mask1, self).__init__()
-
-    def forward(self, z_f, x_f):
-        raise NotImplementedError
-
-    def template(self, template):
-        raise NotImplementedError
-
-    def track(self, search):
-        raise NotImplementedError
-
-    def param_groups(self, start_lr, feature_mult=1):
-        params = filter(lambda x:x.requires_grad, self.parameters())
-        params = [{'params': params, 'lr': start_lr * feature_mult}]
-        return params    
-
 class Mask(nn.Module):
     def __init__(self):
         super(Mask, self).__init__()
@@ -85,23 +63,19 @@ class Mask(nn.Module):
 class UPChannelMask(Mask):
     def __init__(self, feature_in=256):
         super(UPChannelMask, self).__init__()
+        mask_output = 63 * 63        
 
-        mask_output = 63 * 63
-        
         self.template_mask_conv = nn.Conv2d(feature_in,
                 feature_in * mask_output, kernel_size=3)
-
 
         self.search_mask_conv = nn.Conv2d(feature_in,
                 feature_in, kernel_size=3)
 
         self.mask_adjust = nn.Conv2d(mask_output, mask_output, kernel_size=1)
 
-    def forward(self, z_f, x_f):
-    
+    def forward(self, z_f, x_f):    
         mask_kernel = self.template_mask_conv(z_f)
         mask_feature = self.search_mask_conv(x_f)
-
         mask = self.mask_adjust(xcorr_fast(mask_feature, mask_kernel))
         return mask
     
@@ -210,7 +184,7 @@ class Refine(nn.Module):
         self.h0 = nn.Sequential(nn.Conv2d(4, 4, 3, padding=1), nn.ReLU(),
                            nn.Conv2d(4, 4, 3, padding=1), nn.ReLU())
 
-        self.deconv = nn.ConvTranspose2d(256, 32, 15, 15)
+        self.deconv = nn.ConvTranspose2d(63*63, 32, 15, 15)
 
         self.post0 = nn.Conv2d(32, 16, 3, padding=1)
         self.post1 = nn.Conv2d(16, 4, 3, padding=1)
@@ -235,9 +209,9 @@ class Refine(nn.Module):
             if not (pos is None): p2 = torch.index_select(p2, 0, pos)
 
         if not(pos is None):
-            p3 = corr_feature[:, :, pos[0], pos[1]].view(-1, 256, 1, 1)
+            p3 = corr_feature[:, :, pos[0], pos[1]].view(-1, 63*63, 1, 1)
         else:
-            p3 = corr_feature.permute(0, 2, 3, 1).contiguous().view(-1, 256, 1, 1)
+            p3 = corr_feature.permute(0, 2, 3, 1).contiguous().view(-1, 63*63, 1, 1)
 
         out = self.deconv(p3)
         out = self.post0(F.upsample(self.h2(out) + self.v2(p2), size=(31, 31)))
@@ -262,7 +236,6 @@ def conv2d_dw_group(x, kernel):
 class DepthCorr(nn.Module):
     def __init__(self, in_channels, hidden, out_channels, kernel_size=3):
         super(DepthCorr, self).__init__()
-        # adjust layer for asymmetrical features
         self.conv_kernel = nn.Sequential(
                 nn.Conv2d(in_channels, hidden, kernel_size=kernel_size, bias=False),
                 nn.BatchNorm2d(hidden),
@@ -292,3 +265,15 @@ class DepthCorr(nn.Module):
         out = self.head(feature)
         return out                      
 
+class MaskforSiamMask(nn.Module):
+    def __init__(self):
+        super(Mask1, self).__init__()
+
+    def forward(self, z_f, x_f):
+        raise NotImplementedError
+
+    def template(self, template):
+        raise NotImplementedError
+
+    def track(self, search):
+        raise NotImplementedError  
