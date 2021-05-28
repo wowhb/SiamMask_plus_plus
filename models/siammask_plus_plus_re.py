@@ -11,9 +11,9 @@ from torch.autograd import Variable
 from utils.anchors import Anchors
 #from neck import AdjustLayer, AdjustAllLayer
 
-class SiamMask(nn.Module):
+class SiamMask_pp(nn.Module):
     def __init__(self, anchors=None, o_sz=127, g_sz=127):
-        super(SiamMask, self).__init__()
+        super(SiamMask_pp, self).__init__()
         self.anchors = anchors 
         self.anchor_num = len(self.anchors["ratios"]) * len(self.anchors["scales"])
         self.anchor = Anchors(anchors)
