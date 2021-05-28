@@ -1,6 +1,6 @@
 # --------------------------------------------------------
 # SiamMask++ 
-# Modified from Hyunbin Choi for SiamMask++
+# Modified from Hyunbin Choi for siamask++
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
 
@@ -11,10 +11,10 @@ from torch.autograd import Variable
 from utils.anchors import Anchors
 #from neck import AdjustLayer, AdjustAllLayer
 
-class SiamMask(nn.Module):
+class SiamMask_pp(nn.Module):
     def __init__(self, anchors=None, o_sz=63, g_sz=127):
-        super(SiamMask, self).__init__()
-        self.anchors = anchors 
+        super(SiamMask_pp, self).__init__()
+        self.anchors = anchors  
         self.anchor_num = len(self.anchors["ratios"]) * len(self.anchors["scales"])
         self.anchor = Anchors(anchors)
         self.features = None
