@@ -3,8 +3,8 @@ cat << EOF
 Usage: 
     ${0##*/} [-h/--help] [-s/--start] [-e/--end] [-d/--dataset] [-m/--model]  [-g/--gpu]
     e.g.
-        bash ${0##*/} -s 1 -e 20 -d VOT2018 -g 4 # for test models
-        bash ${0##*/} -m snapshot/checkpoint_e10.pth -n 8 -g 4 # for tune models
+        bash ${0##*/} -s 1 -e 20 -d VOT2019 -g 1 # for test models
+        bash ${0##*/} -m snapshot/checkpoint_e10.pth -n 2 -g 1 # for tune models
 EOF
 }
 
