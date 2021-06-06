@@ -1,7 +1,7 @@
 # --------------------------------------------------------
-# SiamMask
-# Licensed under The MIT License
-# Written by Qiang Wang (wangqiang2015 at ia.ac.cn)
+# SiamMask++ 
+# Modified from Hyunbin Choi for SiamMask++
+# Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
 import numpy as np
 
