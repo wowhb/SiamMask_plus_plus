@@ -3,10 +3,10 @@
 # Modified from Hyunbin Choi for SiamMask++
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
+
 import numpy as np
 import math
 from utils.bbox_helper import center2corner, corner2center
-
 
 class Anchors:
     def __init__(self, cfg):
