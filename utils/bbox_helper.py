@@ -3,8 +3,10 @@
 # Modified from Hyunbin Choi for SiamMask++
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
+
 import numpy as np
 from collections import namedtuple
+
 
 Corner = namedtuple('Corner', 'x1 y1 x2 y2')
 BBox = Corner
