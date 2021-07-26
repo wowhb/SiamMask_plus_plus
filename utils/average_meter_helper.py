@@ -3,8 +3,8 @@
 # Modified from Hyunbin Choi for SiamMask++
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
-import numpy as np
 
+import numpy as np
 
 class Meter(object):
     def __init__(self, name, val, avg):
