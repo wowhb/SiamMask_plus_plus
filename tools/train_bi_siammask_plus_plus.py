@@ -3,6 +3,7 @@
 # Modified from Hyunbin Choi for siamask++
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
+
 import argparse
 import logging
 import os
