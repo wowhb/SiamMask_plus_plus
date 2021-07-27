@@ -6,6 +6,7 @@
 # @project https://github.com/StrangerZhang/pysot-toolkit.git
 # Revised for SiamMask++ by hyunbin choi
 # --------------------------------------------------------
+
 import argparse
 import glob
 from os.path import join, realpath, dirname
