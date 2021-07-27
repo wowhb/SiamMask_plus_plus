@@ -3,6 +3,7 @@
 # Modified from Hyunbin Choi for SiamMask++
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
+
 import argparse
 import logging
 import numpy as np
