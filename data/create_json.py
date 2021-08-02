@@ -3,6 +3,7 @@ import os
 import re
 import numpy as np
 import cv2
+
 from glob import glob
 from fire import Fire
 
