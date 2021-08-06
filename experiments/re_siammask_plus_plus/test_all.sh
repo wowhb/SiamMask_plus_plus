@@ -1,4 +1,5 @@
 show_help() {
+
 cat << EOF
 Usage: 
     ${0##*/} [-h/--help] [-s/--start] [-e/--end] [-d/--dataset] [-m/--model]  [-g/--gpu]
