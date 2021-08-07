@@ -3,9 +3,9 @@
 # Modified from Hyunbin Choi for SiamMask++
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
+
 import json
 from os.path import exists
-
 
 def proccess_loss(cfg):
     if 'reg' not in cfg:
