@@ -119,7 +119,6 @@ if __name__ == '__main__':
     avg.update(time=1.0, accuracy=.90)
 
     print(avg)
-
     print(avg.time)
     print(avg.time.avg)
     print(avg.time.val)
