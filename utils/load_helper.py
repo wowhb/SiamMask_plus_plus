@@ -70,7 +70,6 @@ def restore_from(model, optimizer, ckpt_path):
     ckpt_model_dict = remove_prefix(ckpt['state_dict'], 'module.')
     check_keys(model, ckpt_model_dict)
     model.load_state_dict(ckpt_model_dict, strict=False)
-
     check_keys(optimizer, ckpt['optimizer'])
     optimizer.load_state_dict(ckpt['optimizer'])
     return model, optimizer, epoch, best_acc, arch
