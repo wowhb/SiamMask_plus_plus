@@ -3,6 +3,7 @@
 # Modified from Hyunbin Choi for SiamMask++
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
+
 from os.path import join, realpath, dirname, exists, isdir
 from os import listdir
 import logging
