@@ -7,11 +7,9 @@
 import numpy as np
 from collections import namedtuple
 
-
 Corner = namedtuple('Corner', 'x1 y1 x2 y2')
 BBox = Corner
 Center = namedtuple('Center', 'x y w h')
-
 
 def corner2center(corner):
     """
@@ -91,7 +89,6 @@ def aug_apply(bbox, param, shape, inv=False, rd=False):
     if not inv:
         center = corner2center(bbox)
         original_center = center
-
         real_param = {}
         if 'scale' in param:
             scale_x, scale_y = param['scale']
@@ -104,9 +101,8 @@ def aug_apply(bbox, param, shape, inv=False, rd=False):
             # center.w *= scale_x
             # center.h *= scale_y
             center = Center(center.x, center.y, center.w * scale_x, center.h * scale_y)
-
+            
         bbox = center2corner(center)
-
         if 'shift' in param:
             tx, ty = param['shift']
             x1, y1, x2, y2 = bbox
