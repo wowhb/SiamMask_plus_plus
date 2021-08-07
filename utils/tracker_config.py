@@ -3,6 +3,7 @@
 # Modified from Hyunbin Choi for SiamMask++
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
+
 from __future__ import division
 from utils.anchors import Anchors
 
