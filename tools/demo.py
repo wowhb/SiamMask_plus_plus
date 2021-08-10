@@ -26,12 +26,10 @@ if __name__ == '__main__':
         assert isfile(args.resume), 'Please download {} first.'.format(args.resume)
         siammask_plus_plus = load_pretrain(siammask_plus_plus, args.resume)
     siammask_plus_plus.eval().to(device)
-
-    # Parse Image file
+    
     img_files = sorted(glob.glob(join(args.base_path, '*.jp*')))
     ims = [cv2.imread(imf) for imf in img_files]
 
-    # Select ROI
     cv2.namedWindow("SiamMask++", cv2.WND_PROP_FULLSCREEN)
     # cv2.setWindowProperty("SiamMask++", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     try:
