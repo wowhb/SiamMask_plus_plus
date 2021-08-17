@@ -6,11 +6,11 @@ if [ -z "$1" ]
 fi
 
 which python
-
 ROOT=`git rev-parse --show-toplevel`
 source activate siammask_pp
 export PYTHONPATH=$ROOT:$PYTHONPATH
 export PYTHONPATH=$PWD:$PYTHONPATH
+
 
 mkdir -p logs
 
