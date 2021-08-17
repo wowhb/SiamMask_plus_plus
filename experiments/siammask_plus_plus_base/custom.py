@@ -3,11 +3,11 @@
 # Modified from Hyunbin Choi for SiamMask++
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
-
 from models.siammask_plus_plus_bi import SiamMask_pp
 from models.features import MultiStageFeature
 from models.rpn import RPN, DepthCorr, DepthwiseXCorr
 from models.mask import Mask, DepthCorr, DepthwiseXCorr
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
