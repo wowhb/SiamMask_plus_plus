@@ -6,13 +6,12 @@
 # @project https://github.com/StrangerZhang/pysot-toolkit.git
 # Revised for SiamMask by foolwood
 # --------------------------------------------------------
+
 import os
 import json
 import numpy as np
-
 from glob import glob
 from tqdm import tqdm
-
 from .dataset import Dataset
 from .video import Video
 
