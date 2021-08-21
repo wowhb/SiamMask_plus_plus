@@ -6,8 +6,8 @@
 # @project https://github.com/StrangerZhang/pysot-toolkit.git
 # Revised for SiamMask by foolwood
 # --------------------------------------------------------
-from .vot import VOTDataset
 
+from .vot import VOTDataset
 
 class DatasetFactory(object):
     @staticmethod
