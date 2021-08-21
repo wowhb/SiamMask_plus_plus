@@ -6,11 +6,10 @@
 # @project https://github.com/StrangerZhang/pysot-toolkit.git
 # Revised for SiamMask by foolwood
 # --------------------------------------------------------
+
 import os
 import cv2
-
 from glob import glob
-
 
 class Video(object):
     def __init__(self, name, root, video_dir, init_rect, img_names,
