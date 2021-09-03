@@ -11,15 +11,14 @@ import cv2
 import torch
 from os import makedirs
 from os.path import isfile, isdir, join
-
 from utils.log_helper import init_log, add_file_handler
 from utils.bbox_helper import get_axis_aligned_bbox, cxy_wh_2_rect
 from utils.load_helper import load_pretrain
 from utils.benchmark_helper import load_dataset
-
 from tools.test import siamese_init, siamese_track
 from utils.config_helper import load_config
 from utils.pyvotkit.region import vot_overlap, vot_float2str
+
 
 def parse_range(arg):
     param = map(float, arg.split(','))
