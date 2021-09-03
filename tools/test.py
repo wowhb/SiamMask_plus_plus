@@ -4,6 +4,7 @@
 # Written by Qiang Wang (Licensed under The MIT License)
 # --------------------------------------------------------
 
+
 from __future__ import division
 import argparse
 import logging
@@ -23,6 +24,7 @@ from utils.anchors import Anchors
 from utils.tracker_config import TrackerConfig
 from utils.config_helper import load_config
 from utils.pyvotkit.region import vot_overlap, vot_float2str
+
 
 thrs = np.arange(0.3, 0.5, 0.05)
 
