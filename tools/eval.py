@@ -12,9 +12,9 @@ import glob
 from os.path import join, realpath, dirname
 from tqdm import tqdm
 from multiprocessing import Pool
-
 from utils.pysot.datasets import VOTDataset
 from utils.pysot.evaluation import AccuracyRobustnessBenchmark, EAOBenchmark
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='VOT Evaluation')
