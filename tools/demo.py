@@ -7,6 +7,7 @@
 import glob
 from tools.test import *
 
+
 parser = argparse.ArgumentParser(description='PyTorch Tracking Demo')
 parser.add_argument('--resume', default='', type=str, required=True,
                     metavar='PATH',help='path to latest checkpoint (default: none)')
@@ -15,6 +16,7 @@ parser.add_argument('--config', dest='config', default='config_davis.json',
 parser.add_argument('--base_path', default='../../data/VOT2019/ants1', help='datasets')
 parser.add_argument('--cpu', action='store_true', help='cpu mode')
 args = parser.parse_args()
+
 
 if __name__ == '__main__':
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
