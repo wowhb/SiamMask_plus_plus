@@ -23,6 +23,7 @@ from tensorboardX import SummaryWriter
 from utils.config_helper import load_config
 from torch.utils.collect_env import get_pretty_env_info
 
+
 torch.backends.cudnn.benchmark = True
 
 parser = argparse.ArgumentParser(description='PyTorch Tracking Training')
