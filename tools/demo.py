@@ -7,7 +7,6 @@
 import glob
 from tools.test import *
 
-
 parser = argparse.ArgumentParser(description='PyTorch Tracking Demo')
 parser.add_argument('--resume', default='', type=str, required=True,
                     metavar='PATH',help='path to latest checkpoint (default: none)')
