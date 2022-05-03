@@ -1,4 +1,4 @@
-# SiamMask++
+# SiamMask++ (SiamMask_plus_plus)
 
 Visual object tracking
 
